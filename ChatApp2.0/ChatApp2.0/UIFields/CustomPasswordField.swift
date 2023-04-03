@@ -21,7 +21,7 @@ struct CustomPasswordTextField: View {
             }).focused($showLabel).textInputAutocapitalization(.never).autocorrectionDisabled().font(.system(size: 17))
                .padding()
                 .overlay {
-                RoundedRectangle(cornerRadius: 5, style: .continuous).stroke( .gray,lineWidth: 1.5).shadow(color: .gray, radius: 10)
+                    RoundedRectangle(cornerRadius: 5, style: .continuous).stroke( borderColor,lineWidth: 1.5).shadow(color: .gray, radius: 10)
             }
             if showLabel {
                 HStack {

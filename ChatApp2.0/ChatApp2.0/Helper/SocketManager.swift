@@ -21,7 +21,7 @@ class WSManager: NSObject, URLSessionWebSocketDelegate {
     func setupConnection(chatId: String, chatAccessKey: String, completionHandler: @escaping ((String)->())) {
         self.completionHandler = completionHandler
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
-        let url = URL(string: "wss://api.chatengine.io/chat/?projectID=5f74b2c6-3249-4f9f-ac3d-42ace94ba53b&chatID=\(chatId)&accessKey=\(chatAccessKey)")
+        let url = URL(string: "wss://api.chatengine.io/chat/?projectID=9f65142b-d72a-4667-9b95-db72a5bb950e&chatID=\(chatId)&accessKey=\(chatAccessKey)")
         webSocket = session.webSocketTask(with: url!)
         webSocket?.resume()
     }

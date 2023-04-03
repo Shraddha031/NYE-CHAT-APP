@@ -11,6 +11,7 @@ import SwiftUI
 class ChatHistoryViewModel: ObservableObject{
     @Published var chat: [ChatModel] = []
     @Published var showNewBotView = false
+    @Published var showLogoutAlert = false
     func setUpApp(questions: FetchedResults<BotQuestions> , settings: UserSettings) {
         showChatHistory(questions: questions, settings: settings)
     }

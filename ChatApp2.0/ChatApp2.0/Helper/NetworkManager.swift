@@ -24,7 +24,7 @@ class NetworkManager {
     static let shared = NetworkManager()
     func requestForApi(urlString: String, _ register: RegisterModel?, method:String ,completionHandler: ((Any)->())?, errorHandler: ((Any)->())?) {
         var request = URLRequest(url: URL(string: urlString)!)
-        request.addValue("8b76bfc4-2b1e-47cf-abcc-e99858ea7ee2", forHTTPHeaderField: "PRIVATE-KEY")
+        request.addValue("24e64b61-e532-4546-8a45-5ec84a2cb4d6", forHTTPHeaderField: "PRIVATE-KEY")
         request.httpMethod = method
         if let register = register {
             request.httpBody = try? JSONEncoder().encode(register)
@@ -66,7 +66,7 @@ class NetworkManager {
 //        if(urlString == "https://retoolapi.dev/5DddMe/data"){
 //            request.fetchli
 //        }
-        request.addValue("5f74b2c6-3249-4f9f-ac3d-42ace94ba53b", forHTTPHeaderField: "Project-ID")
+        request.addValue("9f65142b-d72a-4667-9b95-db72a5bb950e", forHTTPHeaderField: "Project-ID")
         request.addValue(username, forHTTPHeaderField: "User-Name")
         request.addValue(userScret, forHTTPHeaderField: "User-Secret")
         request.httpMethod = method
@@ -74,6 +74,8 @@ class NetworkManager {
             request.httpBody  = try! JSONEncoder().encode(requestInfo)
         }else if requestFor == "chatBot"{
             request.httpBody  = try! JSONEncoder().encode(requestInfo)
+        } else if requestFor == "makeOnline"{
+            request.httpBody = try! JSONEncoder().encode(requestInfo)
         }
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -100,7 +102,7 @@ class NetworkManager {
         request.httpBody = try? JSONEncoder().encode(createChat)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("5f74b2c6-3249-4f9f-ac3d-42ace94ba53b", forHTTPHeaderField: "Project-ID")
+        request.addValue("9f65142b-d72a-4667-9b95-db72a5bb950e", forHTTPHeaderField: "Project-ID")
         request.addValue(username, forHTTPHeaderField: "User-Name")
         request.addValue(userSecret, forHTTPHeaderField: "User-Secret")
         let session = URLSession.shared
@@ -119,3 +121,4 @@ class NetworkManager {
         }.resume()
     }
 }
+ 

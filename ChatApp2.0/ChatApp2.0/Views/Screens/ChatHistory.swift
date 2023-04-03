@@ -46,33 +46,38 @@ struct ChatHistory: View {
                 }
                 Spacer()
             }.navigationBarTitle("Chats")
-                .navigationBarItems(trailing: Button(action: {
-                    ChatHistoryVm.logOut(settings: settings)
+            .navigationBarItems(trailing: Button(action: {
+                    ChatHistoryVm.showLogoutAlert = true
+//                    ChatHistoryVm.logOut(settings: settings)
                 }, label:{ Image(systemName:"rectangle.portrait.and.arrow.right" ).frame(width: 40, height: 40)}))
-//                .onAppear{
-//                    ChatHistoryVm.showChatHistory(questions: botQuery, settings: settings)
-//                }
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-    //                    NavigationLink(destination: chatBotPage(), isActive:$showChatPage){
-                    NavigationLink(destination: ChatBot(), isActive: $ChatHistoryVm.showNewBotView){
-                        Button(action: {
-                            //                            showChatPage = true
-                            ChatHistoryVm.showNewBotView = true
-                        }, label: {
-                            Image(systemName: "plus.circle.fill").resizable().scaledToFill().frame(width: 60,height: 60).padding()
-                        })
-                        //                    }
-                    }
+            .alert("Are you sure you want to logOut", isPresented: $ChatHistoryVm.showLogoutAlert) {
+                Button("Cancel", role: .cancel){}
+                Button("Logout", role: .destructive) {
+                    ChatHistoryVm.logOut(settings: settings)
                 }
             }
-        }.onAppear{
-            ChatHistoryVm.setUpApp(questions: botQuery, settings: settings)
+                    
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            //                    NavigationLink(destination: chatBotPage(), isActive:$showChatPage){
+                            NavigationLink(destination: ChatBot(), isActive: $ChatHistoryVm.showNewBotView){
+                                Button(action: {
+                                    //                            showChatPage = true
+                                    ChatHistoryVm.showNewBotView = true
+                                }, label: {
+                                    Image(systemName: "plus.circle.fill").resizable().scaledToFill().frame(width: 60,height: 60).padding()
+                                })
+                                //                    }
+                            }
+                        }
+                    }
+                }.onAppear{
+                    ChatHistoryVm.setUpApp(questions: botQuery, settings: settings)
+                }
         }
     }
-}
 
 struct ChatHistory_Previews: PreviewProvider {
     static var previews: some View {

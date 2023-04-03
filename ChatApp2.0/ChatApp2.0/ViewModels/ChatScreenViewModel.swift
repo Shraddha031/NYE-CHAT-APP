@@ -65,7 +65,7 @@ class ChatScreenViewModel: ObservableObject{
                 break
             }
         })
-        self.makeOnline(state: "false", settigns: UserSettings())
+        self.makeOnline(state: "true", settigns: UserSettings())
     }
 
     func SendMessage(settings: UserSettings){
@@ -122,7 +122,8 @@ class ChatScreenViewModel: ObservableObject{
     func makeOnline(state: String, settigns: UserSettings){
         NetworkManager.shared.getChatApi(urlString: "https://api.chatengine.io/users/me/", requestFor: "makeOnline", self.chat.id, method: "PATCH", username: settigns.user.username, userScret: settigns.user.secret, requestInfo: ["is_online": state], completionHandler: {
             data in
-            
+            print(data)
+            print("Making user online")
         }, errorHandler: {
             data in
             
