@@ -12,9 +12,11 @@ class ChatHistoryViewModel: ObservableObject{
     @Published var chat: [ChatModel] = []
     @Published var showNewBotView = false
     @Published var showLogoutAlert = false
+    //fuction to show all the history when my chathistory page get loaded
     func setUpApp(questions: FetchedResults<BotQuestions> , settings: UserSettings) {
         showChatHistory(questions: questions, settings: settings)
     }
+    //it is a function to load all the previous room with the chat title, date, last message
     func showChatHistory(questions: FetchedResults<BotQuestions> ,settings: UserSettings){
         if(questions.count == 0){
             CoreDataHelper.saveExistingQuestions()
@@ -45,12 +47,14 @@ class ChatHistoryViewModel: ObservableObject{
             
         })
     }
+    // this function is made to fetch time from created that is recieved from api
     func getTime(_ date: String) -> String{
         if date.count < 16 {
             return "2000-12-09"
         }
         return String(date[date.index(date.startIndex, offsetBy: 11)...date.index(date.startIndex, offsetBy: 15)])
     }
+    // this function is made to fetch data from created that is recieved from api
     func getDate(_ date: String) -> String{
         print(date)
         if date.count < 12 {
@@ -58,6 +62,7 @@ class ChatHistoryViewModel: ObservableObject{
         }
         return String(date[date.index(date.startIndex, offsetBy: 0)...date.index(date.startIndex, offsetBy: 10)])
     }
+    //thisn function empty the userdefaults of current user so that we can implement logout
     func logOut(settings: UserSettings){
         settings.settingUser(user: User(username: "", firstname: "", lastname: "", secret: ""))
     }

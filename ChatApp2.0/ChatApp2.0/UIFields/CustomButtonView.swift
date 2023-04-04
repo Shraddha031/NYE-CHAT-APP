@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+//file for design of custom button so that it can be easily be accessed at any other place
 struct CustomButtonView: View {
     var btnTitle: String?
     var action: (() -> Void)?

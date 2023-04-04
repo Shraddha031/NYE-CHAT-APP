@@ -22,23 +22,26 @@ class LogInViewModel: ObservableObject{
     //
     @Published var textLoginAlert = "Invalid Credentials"
     @Published var showLoading = false
-    
+    //this functionc checks that username should be of length between 7 to 18 and only contains small and capital letters and underscore
     func isUsernameValid(input: String) -> Bool {
         let test = NSPredicate(format:"SELF MATCHES %@", "\\w{7,18}")
         return test.evaluate(with: input)
     }
-    
+    //this functions checks that password entered should contain atleast of special character, number, capital letter, lower case character and shoul be greater that length 8
     func isPasswordValid(input: String) -> Bool {
         let pswdRegEx = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
         let pswdPred = NSPredicate(format:"SELF MATCHES %@", pswdRegEx)
         return pswdPred.evaluate(with: input)
     }
+    //this function checks that username entered if valid or not
     func UsernameCheck() {
         usernameShowError = !isUsernameValid(input: usernameTf)
     }
+    //this function checks that password entered if valid or not
     func SecretCheck() {
         passwordError = !isPasswordValid(input: passwordTf)
     }
+    //this function saves the user session
     func setData(_ register: User, settigns: UserSettings){
         UserDefaults.standard.set(register.username, forKey: "username")
         UserDefaults.standard.set(register.firstname, forKey: "firstname")
@@ -46,6 +49,8 @@ class LogInViewModel: ObservableObject{
         UserDefaults.standard.set(register.secret, forKey: "secret")
         settigns.settingUser(user: register)
     }
+    //this function hit api if all the fields are validated
+    //it returns focus state enum which is required for focusing the textfield that has invalid data
     func LogIn(settings: UserSettings) -> FocusStatesLogin? {
         if isUsernameValid(input: usernameTf){
             if isPasswordValid(input: passwordTf){

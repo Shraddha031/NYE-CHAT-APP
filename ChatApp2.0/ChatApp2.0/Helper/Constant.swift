@@ -32,3 +32,7 @@ struct ChatRoom {
     static let user1 = "rose_byrne"
     static let user2 = "wally_ryan"
 }
+struct ProjectSettings{
+    static let projectId = "9f65142b-d72a-4667-9b95-db72a5bb950e"
+    static let privateKey = "24e64b61-e532-4546-8a45-5ec84a2cb4d6"
+}

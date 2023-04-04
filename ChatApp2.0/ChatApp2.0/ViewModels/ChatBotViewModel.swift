@@ -15,6 +15,7 @@ class ChatBotViewModel: ObservableObject{
     @Published var botQuestions: [ChatBotModel] = []
     @Published var showChatScreen = false
     var allQuestions: FetchedResults<BotQuestions>?
+    //this function shows the question that has no parent
     func showBotQuestions(allQuestions: FetchedResults<BotQuestions>){
         self.allQuestions = allQuestions
         botQuestions = []
@@ -23,6 +24,7 @@ class ChatBotViewModel: ObservableObject{
             botQuestions.append(ChatBotModel(id: temp.id!,parentId: temp.parentId, botQue: temp.botQue!))
         }
     }
+    //this functions returns all the list of questions that matches their parent parentID
     func loadQuestions(parentId: UUID?) -> [FetchedResults<BotQuestions>.Element]{
         let temp = allQuestions!.filter{
             que in
@@ -30,6 +32,9 @@ class ChatBotViewModel: ObservableObject{
         }
         return temp
     }
+    //this function appends child question in chatbotmodel based on if there is any child or clicked questions
+    //it also keeps track of the last clicked items(with children) in chattitle
+    //it also appends the clicked time to the list as user response
     func continueProcess(question: ChatBotModel){
         if question.pressed{
             let ques = loadQuestions(parentId: question.id)
@@ -42,6 +47,7 @@ class ChatBotViewModel: ObservableObject{
             }
         }
     }
+    // this function create chat room on user click with two user and a title
     func createChatRoom(settings: UserSettings){
         NetworkManager.shared.createChat(urlString: "https://api.chatengine.io/chats/", createChat: CreateChat(usernames: [settings.user.username == ChatRoom.user1 ? ChatRoom.user2 : ChatRoom.user1], title: chatTitle), username: settings.user.username, userSecret: settings.user.secret, completionHandler: { data in
             print(data)

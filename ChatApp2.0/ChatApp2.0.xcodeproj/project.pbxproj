@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4117A5E529DBECEE00AA1A19 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4117A5E429DBECEE00AA1A19 /* Constant.swift */; };
 		4185449D29D58B4C003F88A2 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4185449C29D58B4B003F88A2 /* CustomButtonView.swift */; };
 		4196D55829D054BA00FCA831 /* ChatHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196D55729D054BA00FCA831 /* ChatHistory.swift */; };
 		4196D55C29D0697E00FCA831 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196D55B29D0697E00FCA831 /* CustomTextField.swift */; };
@@ -28,7 +29,6 @@
 		4196D58029D2BB7200FCA831 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196D57F29D2BB7200FCA831 /* CoreDataHelper.swift */; };
 		4196D58229D30A4A00FCA831 /* CustomBotQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196D58129D30A4A00FCA831 /* CustomBotQuestionView.swift */; };
 		4196D58629D42C1C00FCA831 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4196D58529D42C1C00FCA831 /* SocketManager.swift */; };
-		41CA7E5C29D6D5DA00D2260B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA7E5B29D6D5DA00D2260B /* Constant.swift */; };
 		41E289D629D024E8006D6DE8 /* ChatApp2_0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E289D529D024E8006D6DE8 /* ChatApp2_0App.swift */; };
 		41E289D829D024E8006D6DE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E289D729D024E8006D6DE8 /* ContentView.swift */; };
 		41E289DA29D024E9006D6DE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41E289D929D024E9006D6DE8 /* Assets.xcassets */; };
@@ -63,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4117A5E429DBECEE00AA1A19 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = ../../../../../Desktop/Constant.swift; sourceTree = "<group>"; };
 		4185449C29D58B4B003F88A2 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		4196D55729D054BA00FCA831 /* ChatHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistory.swift; sourceTree = "<group>"; };
 		4196D55B29D0697E00FCA831 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		4196D57F29D2BB7200FCA831 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		4196D58129D30A4A00FCA831 /* CustomBotQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBotQuestionView.swift; sourceTree = "<group>"; };
 		4196D58529D42C1C00FCA831 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
-		41CA7E5B29D6D5DA00D2260B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		41E289D229D024E8006D6DE8 /* ChatApp2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41E289D529D024E8006D6DE8 /* ChatApp2_0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatApp2_0App.swift; sourceTree = "<group>"; };
 		41E289D729D024E8006D6DE8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 				41E28A1629D0539E006D6DE8 /* UserSettings.swift */,
 				4196D57F29D2BB7200FCA831 /* CoreDataHelper.swift */,
 				4196D58529D42C1C00FCA831 /* SocketManager.swift */,
-				41CA7E5B29D6D5DA00D2260B /* Constant.swift */,
+				4117A5E429DBECEE00AA1A19 /* Constant.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -411,7 +411,7 @@
 				4196D56329D06B9A00FCA831 /* SignUpViewModel.swift in Sources */,
 				41E28A0929D03B9E006D6DE8 /* LogIn.swift in Sources */,
 				41E28A0C29D044CE006D6DE8 /* RegisterModel.swift in Sources */,
-				41CA7E5C29D6D5DA00D2260B /* Constant.swift in Sources */,
+				4117A5E529DBECEE00AA1A19 /* Constant.swift in Sources */,
 				4196D58229D30A4A00FCA831 /* CustomBotQuestionView.swift in Sources */,
 				4196D55C29D0697E00FCA831 /* CustomTextField.swift in Sources */,
 				4196D57A29D2B85200FCA831 /* ChatBotViewModel.swift in Sources */,

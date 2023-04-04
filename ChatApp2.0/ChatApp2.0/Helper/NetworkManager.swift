@@ -20,11 +20,14 @@ struct CreateChat: Encodable {
         self.title = title
     }
 }
+
 class NetworkManager {
     static let shared = NetworkManager()
+    //this function is for making any type of api call
+    //completion handler is called on getting response from th api and error handler is called on unsuccessfull API call
     func requestForApi(urlString: String, _ register: RegisterModel?, method:String ,completionHandler: ((Any)->())?, errorHandler: ((Any)->())?) {
         var request = URLRequest(url: URL(string: urlString)!)
-        request.addValue("24e64b61-e532-4546-8a45-5ec84a2cb4d6", forHTTPHeaderField: "PRIVATE-KEY")
+        request.addValue(ProjectSettings.privateKey, forHTTPHeaderField: "PRIVATE-KEY")
         request.httpMethod = method
         if let register = register {
             request.httpBody = try? JSONEncoder().encode(register)
@@ -66,7 +69,7 @@ class NetworkManager {
 //        if(urlString == "https://retoolapi.dev/5DddMe/data"){
 //            request.fetchli
 //        }
-        request.addValue("9f65142b-d72a-4667-9b95-db72a5bb950e", forHTTPHeaderField: "Project-ID")
+        request.addValue(ProjectSettings.projectId, forHTTPHeaderField: "Project-ID")
         request.addValue(username, forHTTPHeaderField: "User-Name")
         request.addValue(userScret, forHTTPHeaderField: "User-Secret")
         request.httpMethod = method
@@ -102,7 +105,7 @@ class NetworkManager {
         request.httpBody = try? JSONEncoder().encode(createChat)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("9f65142b-d72a-4667-9b95-db72a5bb950e", forHTTPHeaderField: "Project-ID")
+        request.addValue(ProjectSettings.projectId, forHTTPHeaderField: "Project-ID")
         request.addValue(username, forHTTPHeaderField: "User-Name")
         request.addValue(userSecret, forHTTPHeaderField: "User-Secret")
         let session = URLSession.shared

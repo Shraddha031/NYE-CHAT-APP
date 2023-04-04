@@ -17,15 +17,15 @@ class WSManager: NSObject, URLSessionWebSocketDelegate {
     static let shared = WSManager()
     private var webSocket: URLSessionWebSocketTask?
     var completionHandler: ((String)->())?
-    
+    //this function intialise completionHandler class variable and sets up the socket
     func setupConnection(chatId: String, chatAccessKey: String, completionHandler: @escaping ((String)->())) {
         self.completionHandler = completionHandler
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
-        let url = URL(string: "wss://api.chatengine.io/chat/?projectID=9f65142b-d72a-4667-9b95-db72a5bb950e&chatID=\(chatId)&accessKey=\(chatAccessKey)")
+        let url = URL(string: "wss://api.chatengine.io/chat/?projectID=\(ProjectSettings.projectId)&chatID=\(chatId)&accessKey=\(chatAccessKey)")
         webSocket = session.webSocketTask(with: url!)
         webSocket?.resume()
     }
-    
+    //for testing if socket is working perfectly
     func ping() {
         webSocket?.sendPing(pongReceiveHandler: { error in
             if let error = error {
@@ -33,7 +33,7 @@ class WSManager: NSObject, URLSessionWebSocketDelegate {
             }
         })
     }
-    
+    //for closing the socket
     func close() {
         webSocket?.cancel(with: .goingAway, reason: "Gone".data(using: .utf8))
     }
@@ -47,7 +47,7 @@ class WSManager: NSObject, URLSessionWebSocketDelegate {
             }
         })
     }
-    
+    //if the result is recieved the completion handler is called using recursion
     func recieve() {
         webSocket?.receive(completionHandler: { [weak self] result in
             switch result {
@@ -68,13 +68,13 @@ class WSManager: NSObject, URLSessionWebSocketDelegate {
             self?.recieve()
         })
     }
-    
+    //this function is called when socket session is started
     func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didOpenWithProtocol protocol: String?) {
         print("Connection Established")
         ping()
         recieve()
     }
-    
+    //this function is called when socket session is ended
     func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didCloseWith closeCode: URLSessionWebSocketTask.CloseCode, reason: Data?) {
         print("Connection Terminated")
     }
